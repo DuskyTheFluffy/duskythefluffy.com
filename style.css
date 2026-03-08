@@ -16,6 +16,13 @@ body {
     opacity: 0;
 }
 
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+        background-position: center top;
+    }
+}
+
 /* Animations */
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
