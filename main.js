@@ -19,7 +19,6 @@ function updateCountdown() {
     }
 }
 
-// Update countdown every second
 const countdownInterval = setInterval(updateCountdown, 1000);
 
 // Add scroll event to reveal sections

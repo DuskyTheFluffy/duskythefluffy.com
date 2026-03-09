@@ -1,4 +1,4 @@
-/*General Reset*/
+/*General*/
 * {
     margin: 0;
     padding: 0;
@@ -106,7 +106,6 @@ body {
     }
 }
 
-/*HERO*/
 .hero {
     text-align: center;
     padding: 100px 20px 60px;
