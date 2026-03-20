@@ -2,140 +2,268 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dusk | Portfolio</title>
+    <title>Dusk Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://duskythefluffy.com">
-
-    <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/images/icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/icon.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/images/icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png">
-
-    <!-- Fonts & CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="DUSK — Portfolio"/>
+    <meta property="og:description" content="Come check out more about Dusk on his portfolio website!"/>
+    <meta property="og:image" content="https://duskythefluffy.com/images/pfp.jpg"/>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Open Graph / Discord / Social -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://duskythefluffy.com" />
-    <meta property="og:title" content="Dusk | Portfolio" />
-    <meta property="og:description" content="Come check out more about Dusk on his portfolio website!" />
-    <meta property="og:image" content="https://duskythefluffy.com/images/pfp.jpg" />
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:image:alt" content="Dusk Profile Picture" />
-
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://duskythefluffy.com" />
-    <meta name="twitter:title" content="Dusk | Portfolio" />
-    <meta name="twitter:description" content="Come check out more about Dusk on his portfolio website!" />
-    <meta name="twitter:image" content="https://duskythefluffy.com/images/pfp.jpg" />
 </head>
 <body>
 
-<div class="background-glow">
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-</div>
+<!-- CUSTOM CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 
-<!-- HEADER -->
-<header class="hero">
-<div class="profile-wrapper">
-    <img src="images/pfp.jpg" alt="Profile Picture" class="profile-img">
-</div>
-    <h1>Dusk</h1>
-    <p class="subtitle">DuskyTheFluffy</p>
-    <p class="subtitle">Gaymer • Tech Enthusiast • Chill</p>
-    
-    <div class="social-links">
-        <a href="https://www.roblox.com/users/545686828/profile" class="social roblox" target="_blank">
-            <img src="icons/roblox.jpg" alt="">
-            <span>Roblox</span>
-        </a>
+<!-- PARTICLE CANVAS -->
+<canvas id="bg-canvas"></canvas>
 
-        <a href="https://discord.gg/u38Z5ZpaDc" class="social discord" target="_blank">
-            <img src="icons/discord.jpg" alt="">
-            <span>Discord</span>
-        </a>
+<!-- GRID FLOOR -->
+<div class="grid-floor" aria-hidden="true"></div>
 
-        <a href="https://www.youtube.com/@DuskyTheFluffy" class="social youtube" target="_blank">
-            <img src="icons/youtube.jpg" alt="">
-            <span>YouTube</span>
-        </a>
+<!-- SCANLINES -->
+<div class="scanlines"></div>
 
-        <a href="https://www.tiktok.com/@duskythefluffy" class="social tiktok" target="_blank">
-            <img src="icons/tiktok.jpg" alt="">
-            <span>TikTok</span>
-        </a>
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+    <div class="hero-bg-text" aria-hidden="true">DUSK</div>
+    <div class="hero-spotlight" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-4" aria-hidden="true"></div>
 
-        <a href="https://www.instagram.com/duskythefluffy/" class="social instagram" target="_blank">
-            <img src="icons/instagram.jpg" alt="">
-            <span>Instagram</span>
-        </a>
+    <div class="hero-content">
+
+        <!-- LEFT: text -->
+        <div class="hero-left">
+            <div class="status-bar">
+                <span class="status-dot"></span>
+                <span class="mono">online // duskythefluffy.com</span>
+                <span class="live-clock mono" id="live-clock"></span>
+            </div>
+
+            <h1 class="hero-name">
+                <span class="glitch" data-text="DUSK">DUSK</span>
+            </h1>
+
+            <div class="hero-sub">
+                <span class="mono accent">@</span>
+                <span class="hero-handle">DuskyTheFluffy</span>
+            </div>
+
+            <p class="hero-desc">
+                <span id="typewriter"></span><span class="cursor-blink">|</span>
+            </p>
+
+            <div class="hero-socials">
+                <a href="https://www.roblox.com/users/545686828/profile" target="_blank" class="hsocial magnetic">
+                    <img src="icons/roblox.jpg" alt="Roblox"><span>Roblox</span>
+                </a>
+                <a href="https://discord.gg/u38Z5ZpaDc" target="_blank" class="hsocial magnetic">
+                    <img src="icons/discord.jpg" alt="Discord"><span>Discord</span>
+                </a>
+                <a href="https://www.youtube.com/@DuskyTheFluffy" target="_blank" class="hsocial magnetic">
+                    <img src="icons/youtube.jpg" alt="YouTube"><span>YouTube</span>
+                </a>
+                <a href="https://www.tiktok.com/@duskythefluffy" target="_blank" class="hsocial magnetic">
+                    <img src="icons/tiktok.jpg" alt="TikTok"><span>TikTok</span>
+                </a>
+                <a href="https://www.instagram.com/duskythefluffy/" target="_blank" class="hsocial magnetic">
+                    <img src="icons/instagram.jpg" alt="Instagram"><span>Instagram</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- RIGHT: pfp -->
+        <div class="hero-right">
+            <div class="pfp-container">
+                <div class="pfp-ring-outer"></div>
+                <div class="pfp-ring-inner"></div>
+                <div class="pfp-corner tl"></div>
+                <div class="pfp-corner tr"></div>
+                <div class="pfp-corner bl"></div>
+                <div class="pfp-corner br"></div>
+                <div class="pfp-scanline-wrap"><div class="pfp-scanline-beam"></div></div>
+                <img src="images/pfp.jpg" alt="Dusk" class="pfp-img">
+                <div class="pfp-glitch-1"></div>
+                <div class="pfp-glitch-2"></div>
+                <div class="pfp-label mono">// DUSK.EXE</div>
+            </div>
+        </div>
+
     </div>
-</header>
 
-<!-- ABOUT -->
-<section class="section about">
-    <h2>About Me</h2>
-    <p>
-        Hey there, I'm Dusk (aka DuskyTheFluffy). My fursona is a sabertoothed fox. I enjoy building projects, 
-        exploring cool tech, playing games with friends, and experimenting with servers and cybersecurity 
-        stuff. I love rock and metal music genres, more recently some edm, and I play mainly bass guitar, but I also play some drums 
-        and guitar. I also do a bit of DJing and love sound and lighting systems. I'm more of a introvert extrovert
-        if that makes sense. I love you Enzo so much, to the end of time. Overall, thats 
-        mostly it about me, I always love to have fun and care for others, and hangout with friends.
-        Thank you for visiting my website and I hope you have a great day!
-    </p>
-</section>
-
-<div class="countdown-timer">
-    <h2>Countdown to my Birthday!</h2>
-    <p id="countdown">Loading...</p>
-</div>
-
-<!-- PROJECTS  -->
-<section class="section projects">
-    <h2>Working On...</h2>
-
-    <div class="project-list">
-        <div class="project-card">
-            <h3>Linux Computer</h3>
-    <p>Reusing some left over parts and purchasing a few new ones to build another computer for just Linux. I got the case and the fan splitters and everything else I needed, it is currently built and working well!</p>
-            <!--<button>View More</button>-->
+    <div class="scroll-cue">
+        <span class="scroll-cue-label">scroll</span>
+        <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+        </div>
+        <div class="scroll-arrows">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 </section>
 
-<!-- GAMES -->
-<section class="section games">
-    <h2>Games I Enjoy</h2>
+<!-- DIVIDER -->
+<div class="section-divider" aria-hidden="true">
+    <div class="div-line"></div>
+    <span class="div-label mono">01</span>
+    <div class="div-line"></div>
+</div>
 
-    <div class="games-grid">
-        <div class="game-square"><img src="images/game1.jpg" alt="Game 1" loading="lazy"></div>
-        <div class="game-square"><img src="images/game2.jpg" alt="Game 2" loading="lazy"></div>
-        <div class="game-square"><img src="images/game3.jpg" alt="Game 3" loading="lazy"></div>
-        <div class="game-square"><img src="images/game4.jpg" alt="Game 4" loading="lazy"></div>
-        <div class="game-square"><img src="images/game5.jpg" alt="Game 5" loading="lazy"></div>
-        <div class="game-square"><img src="images/game6.jpg" alt="Game 6" loading="lazy"></div>
-        <div class="game-square"><img src="images/game7.jpg" alt="Game 7" loading="lazy"></div>
-        <div class="game-square"><img src="images/game8.jpg" alt="Game 8" loading="lazy"></div>
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about" class="panel reveal">
+    <div class="panel-tag mono">ABOUT ME</div>
+    <h2 class="panel-heading">HEY, I'M <span class="stroke-text">DUSK</span></h2>
+
+    <div class="about-grid">
+        <div class="about-copy">
+            <p>Hey! My fursona is a sabertoothed fox. I build projects, break things on purpose and put them back together, I love cybersecurity and anything with tech.</p>
+            <p>Musically I live in rock and metal. I play bass guitar mainly, some drums and guitar too, DJ on the side. Sound and lighting rigs genuinely excite me and I love messing around with them.</p>
+            <p>I love homelabbing and building my own servers or computers and hosting my own things on my own hardware, its so much fun to mess around with.</p>
+            <p>Thanks for stopping by!</p>
+            <p class="about-highlight">I love you Enzo, to the end of time.</p>
+        </div>
+
+        <div class="trait-list">
+            <div class="trait"><span class="trait-num mono">01</span><span class="trait-name">Bass Guitar</span><span class="trait-bar"><span style="--w:90%"></span></span></div>
+            <div class="trait"><span class="trait-num mono">02</span><span class="trait-name">Linux / Servers</span><span class="trait-bar"><span style="--w:82%"></span></span></div>
+            <div class="trait"><span class="trait-num mono">03</span><span class="trait-name">Cybersecurity</span><span class="trait-bar"><span style="--w:70%"></span></span></div>
+            <div class="trait"><span class="trait-num mono">04</span><span class="trait-name">DJing</span><span class="trait-bar"><span style="--w:75%"></span></span></div>
+            <div class="trait"><span class="trait-num mono">05</span><span class="trait-name">Sound &amp; Lighting</span><span class="trait-bar"><span style="--w:78%"></span></span></div>
+            <div class="trait"><span class="trait-num mono">06</span><span class="trait-name">Gaming</span><span class="trait-bar"><span style="--w:95%"></span></span></div>
+        </div>
     </div>
 </section>
 
+<!-- DIVIDER -->
+<div class="section-divider" aria-hidden="true">
+    <div class="div-line"></div>
+    <span class="div-label mono">02</span>
+    <div class="div-line"></div>
+</div>
 
-<footer>
-    <p>3/12/2026</p>
+<!-- ═══════ BIRTHDAY ═══════ -->
+<section id="birthday" class="panel reveal">
+    <div class="panel-tag mono">UPCOMING</div>
+    <h2 class="panel-heading">BIRTHDAY <span class="stroke-text">COUNTDOWN</span></h2>
+
+    <div class="countdown-wrap">
+        <div class="cd-block">
+            <div class="cd-digits" id="cd-days">00</div>
+            <div class="cd-unit mono">DAYS</div>
+        </div>
+        <div class="cd-colon">:</div>
+        <div class="cd-block">
+            <div class="cd-digits" id="cd-hours">00</div>
+            <div class="cd-unit mono">HRS</div>
+        </div>
+        <div class="cd-colon">:</div>
+        <div class="cd-block">
+            <div class="cd-digits" id="cd-minutes">00</div>
+            <div class="cd-unit mono">MIN</div>
+        </div>
+        <div class="cd-colon">:</div>
+        <div class="cd-block">
+            <div class="cd-digits" id="cd-seconds">00</div>
+            <div class="cd-unit mono">SEC</div>
+        </div>
+    </div>
+    <p class="cd-tagline mono" id="birthday-msg">// until birthday.exe runs</p>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider" aria-hidden="true">
+    <div class="div-line"></div>
+    <span class="div-label mono">03</span>
+    <div class="div-line"></div>
+</div>
+
+<!-- ═══════ PROJECTS ═══════ -->
+<section id="projects" class="panel reveal">
+    <div class="panel-tag mono">BUILDING</div>
+    <h2 class="panel-heading">WORKING <span class="stroke-text">ON</span></h2>
+
+    <div class="project-row">
+        <div class="project-item">
+            <div class="project-num mono">001</div>
+            <div class="project-body">
+                <div class="project-status">
+                    <span class="pstatus-dot"></span>
+                    <span class="mono">COMPLETED</span>
+                </div>
+                <h3>Linux Build</h3>
+                <p>Reusing leftover parts and buying a few new ones to spin up a dedicated Linux machine. It's alive and running well.</p>
+                <div class="project-pills">
+                    <span>Linux</span><span>Hardware</span><span>DIY</span>
+                </div>
+            </div>
+            <div class="project-corner-deco"></div>
+                    <div class="project-num mono">002</div>
+            <div class="project-body">
+                <div class="project-status">
+                    <span class="pstatus-dot"></span>
+                    <span class="mono">COMPLETED</span>
+                </div>
+                <h3>AI Server</h3>
+                <p>Self hosting a AI server that has its own interface thanks to open webui. I'm using LM Studio to run my AI models on a GPU which can be accessed via the LM Studio API.</p>
+                <div class="project-pills">
+                    <span>Linux</span><span>Hardware</span><span>AI</span><span>Docker</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider" aria-hidden="true">
+    <div class="div-line"></div>
+    <span class="div-label mono">04</span>
+    <div class="div-line"></div>
+</div>
+
+<!-- ═══════ GAMES ═══════ -->
+<section id="games" class="panel panel-games reveal">
+    <div class="panel-tag mono">GAMING</div>
+    <h2 class="panel-heading">GAMES I <span class="stroke-text">PLAY</span></h2>
+
+    <div class="carousel-scene">
+        <div class="carousel-stage" id="carousel-stage">
+            <div class="game-card"><img src="images/game1.jpg" alt="Game 1" loading="lazy"></div>
+            <div class="game-card"><img src="images/game2.jpg" alt="Game 2" loading="lazy"></div>
+            <div class="game-card"><img src="images/game3.jpg" alt="Game 3" loading="lazy"></div>
+            <div class="game-card"><img src="images/game4.jpg" alt="Game 4" loading="lazy"></div>
+            <div class="game-card"><img src="images/game5.jpg" alt="Game 5" loading="lazy"></div>
+            <div class="game-card"><img src="images/game6.jpg" alt="Game 6" loading="lazy"></div>
+            <div class="game-card"><img src="images/game7.jpg" alt="Game 7" loading="lazy"></div>
+            <div class="game-card"><img src="images/game8.jpg" alt="Game 8" loading="lazy"></div>
+        </div>
+    </div>
+
+    <div class="carousel-controls">
+        <button class="carousel-btn" id="carousel-prev">← PREV</button>
+        <span class="carousel-hint">drag or click to spin</span>
+        <button class="carousel-btn" id="carousel-next">NEXT →</button>
+    </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer id="footer">
+    <div class="footer-inner">
+        <div class="footer-name glitch" data-text="DUSK">DUSK</div>
+        <div class="footer-meta mono">duskythefluffy.com // 3/20/2026</div>
+        <div class="footer-credits mono">Have a good day!</div>
+    </div>
 </footer>
 
 <script src="main.js"></script>
-
 </body>
 </html>
