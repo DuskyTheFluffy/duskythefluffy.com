@@ -304,3 +304,12 @@
     }, { passive: true });
     scene.addEventListener('touchend', () => { lastUserTime = Date.now(); });
 })();
+document.getElementById('mc-copy-btn').addEventListener('click', () => {
+    const ip = 'join.duskythefluffy.com';
+    const confirm = document.getElementById('mc-copy-confirm');
+
+    navigator.clipboard.writeText(ip).then(() => {
+        confirm.classList.add('show');
+        setTimeout(() => confirm.classList.remove('show'), 2000);
+    });
+});
