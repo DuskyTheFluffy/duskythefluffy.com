@@ -911,6 +911,141 @@ body {
 .footer-credits { opacity:.45; }
 
 /* ═══════════════════════════════════
+   MINECRAFT / JOIN SECTION
+═══════════════════════════════════ */
+.mc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: clamp(24px, 4vw, 60px);
+    align-items: center;
+    max-width: 860px;
+}
+
+.mc-divider-vert {
+    background: linear-gradient(to bottom, transparent, var(--border), transparent);
+    height: 160px;
+    align-self: center;
+}
+
+.mc-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: clamp(24px, 3vw, 40px);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s, box-shadow .3s;
+}
+.mc-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: linear-gradient(to bottom, var(--neon), var(--cyan));
+    transition: height .35s ease;
+}
+.mc-card:hover::before { height: 100%; }
+.mc-card:hover {
+    border-color: rgba(var(--neon-rgb), .3);
+    box-shadow: 0 0 50px rgba(var(--neon-rgb), .05);
+}
+
+.mc-card-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.mc-card-label {
+    font-size: .62rem;
+    letter-spacing: .22em;
+    color: var(--neon);
+    text-transform: uppercase;
+}
+
+.mc-ip {
+    font-family: var(--ff-m);
+    font-size: clamp(1rem, 2.2vw, 1.4rem);
+    color: var(--cyan);
+    letter-spacing: .06em;
+    word-break: break-all;
+}
+
+.mc-copy-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    padding: 7px 16px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: all .2s;
+    border-radius: 3px;
+}
+.mc-copy-btn:hover {
+    border-color: rgba(var(--cyan-rgb), .5);
+    color: var(--cyan);
+    background: rgba(var(--cyan-rgb), .06);
+}
+
+.mc-copy-confirm {
+    font-size: .65rem;
+    letter-spacing: .12em;
+    color: var(--amber);
+    opacity: 0;
+    transition: opacity .3s;
+    margin-top: -8px;
+}
+.mc-copy-confirm.show { opacity: 1; }
+
+.mc-desc {
+    font-size: clamp(.82rem, 1.1vw, .92rem);
+    color: var(--text-mid);
+    line-height: 1.72;
+}
+
+.mc-discord-btn {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 9px 20px;
+    border: 1px solid rgba(var(--neon-rgb), .35);
+    background: rgba(var(--neon-rgb), .05);
+    color: var(--text);
+    text-decoration: none;
+    font-size: .75rem;
+    letter-spacing: .1em;
+    border-radius: 3px;
+    transition: all .25s;
+    position: relative;
+    overflow: hidden;
+}
+.mc-discord-btn::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--neon), var(--cyan));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .25s ease;
+}
+.mc-discord-btn:hover::after { transform: scaleX(1); }
+.mc-discord-btn:hover {
+    border-color: rgba(var(--neon-rgb), .6);
+    background: rgba(var(--neon-rgb), .1);
+    box-shadow: 0 0 20px rgba(var(--neon-rgb), .12);
+}
+
+@media (max-width: 600px) {
+    .mc-grid {
+        grid-template-columns: 1fr;
+    }
+    .mc-divider-vert {
+        display: none;
+    }
+}
+
+/* ═══════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════ */
 @media (max-width: 860px) {
