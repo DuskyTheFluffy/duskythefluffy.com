@@ -1,0 +1,14 @@
+name = "duskthefluffy"
+main = "src/index.js"
+compatibility_date = "2024-12-11"
+type = "javascript"
+
+[env.production]
+name = "duskthefluffy"
+routes = [
+  { pattern = "duskythefluffy.com/*", zone_name = "duskythefluffy.com" }
+]
+
+[build]
+command = "echo 'Static site — no build needed'"
+watch_paths = ["**/*.{html,css,js,jpg,png,ico}"]
